@@ -2,8 +2,15 @@
   <header>
     <Navbar />
   </header>
-  <main>
-    <router-view />
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-2 p-0">
+        <Sidebar />
+      </div>
+      <div class="col-10">
+        <router-view />
+      </div>
+    </div>
   </main>
   <footer>
     <div class="bg-dark text-light text-center p-4">
@@ -13,18 +20,17 @@
 </template>
 
 <script>
-import { computed } from 'vue'
-import { AppState } from './AppState'
+import { computed } from "vue";
+import { AppState } from "./AppState";
 export default {
-  name: 'App',
+  name: "App",
   setup() {
     return {
-      appState: computed(() => AppState)
-    }
-  }
-}
+      appState: computed(() => AppState),
+    };
+  },
+};
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
 </style>
