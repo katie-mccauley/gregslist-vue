@@ -31,9 +31,11 @@ import { useRoute } from "vue-router";
 import { housesService } from "../services/HousesService";
 import { logger } from "../utils/Logger";
 import { Modal } from "bootstrap";
+import { useRouter } from "vue-router";
 export default {
   setup() {
     const route = useRoute();
+    const router = useRouter();
     onMounted(async () => {
       try {
         AppState.activeHouse = {};
@@ -51,6 +53,7 @@ export default {
       async deleteHouse() {
         try {
           await housesService.deleteHouse(route.params.id);
+          router.push({ name: "Houses" });
         } catch (error) {
           logger.error(error);
         }
